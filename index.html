@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
+    />
+    <title>مشويات السلطان | أصل المشويات على الفحم</title>
+    <meta
+      name="description"
+      content="قائمة طعام إلكترونية تفاعلية لمطعم مشويات السلطان، أصل المشويات على الفحم مع سلة طلبات فورية وطلب مباشر عبر واتساب."
+    />
+    <meta property="og:title" content="مشويات السلطان | أصل المشويات على الفحم" />
+    <meta
+      property="og:description"
+      content="قائمة طعام إلكترونية تفاعلية لمطعم مشويات السلطان، أصل المشويات على الفحم مع سلة طلبات فورية وطلب مباشر عبر واتساب."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#121212" />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#menu-section">انتقل إلى قائمة الطعام</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="brand-wordmark" aria-label="مشويات السلطان - الصفحة الرئيسية">
+          مشويات السلطان
+        </a>
+
+        <nav class="primary-nav" aria-label="التنقل الرئيسي">
+          <a href="#menu-section" class="nav-link">القائمة</a>
+          <a href="#menu-section" class="nav-link" data-quick-filter="featured">الأكثر طلباً</a>
+          <a href="#craft-section" class="nav-link">أصل الشواء</a>
+          <a href="#contact-footer" class="nav-link">تواصل معنا</a>
+        </nav>
+
+        <div class="header-action">
+          <button
+            type="button"
+            class="cart-trigger-btn"
+            id="open-cart-btn"
+            aria-haspopup="dialog"
+            aria-controls="cart-drawer"
+            aria-expanded="false"
+            aria-label="فتح سلة الطلبات"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M6 7h12l-1.2 12.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9 7V5.5a3 3 0 0 1 6 0V7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="cart-trigger-label">السلة</span>
+            <span class="cart-count-num" id="header-cart-count" aria-live="polite">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <img
+            src="./assets/hero-charcoal-grill.jpg"
+            alt=""
+            class="hero-bg-image"
+            width="1600"
+            height="900"
+            decoding="async"
+            fetchpriority="high"
+            referrerpolicy="no-referrer"
+          />
+          <div class="hero-scrim"></div>
+          <canvas
+            id="ember-canvas"
+            class="ember-canvas"
+            aria-hidden="true"
+            data-testid="ember-canvas"
+          ></canvas>
+        </div>
+
+        <div class="container">
+          <div class="hero-content">
+            <p class="hero-kicker">أصل المشويات على الفحم · تتبيلة شرقية منذ 1998</p>
+            <h1 class="hero-title" id="hero-title">
+              <span class="title-sheen" data-text="مشويات السلطان">مشويات السلطان</span>
+            </h1>
+            <p class="hero-subtitle">
+              أصناف مختارة من اللحوم الطازجة المتبّلة يومياً والمشوية ببطء على جمر السنديان الطبيعي،
+              تصل إليك ساخنة بعبق الفحم الأصيل.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#menu-section" class="btn btn-primary" id="hero-browse-btn">
+                تصفح المنيو الآن
+              </a>
+              <a
+                href="#menu-section"
+                class="btn btn-ghost"
+                id="hero-featured-btn"
+                data-quick-filter="featured"
+              >
+                الأكثر طلباً
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-proof-bar">
+          <div class="container proof-grid">
+            <div class="proof-item">
+              <span class="proof-value">100%</span>
+              <span class="proof-label">فحم سنديان طبيعي</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-value">يومياً</span>
+              <span class="proof-label">ذبح وتتبيل طازج</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-value">35 دقيقة</span>
+              <span class="proof-label">متوسط التوصيل الساخن</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-value" id="hero-free-delivery-value">150 ر.س</span>
+              <span class="proof-label">توصيل مجاني للطلبات</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section" id="menu-section" aria-labelledby="menu-heading">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-title-group">
+              <p class="section-eyebrow">قائمة الجمر المختارة</p>
+              <h2 class="section-heading" id="menu-heading">اختر أطباقك من على الفحم</h2>
+            </div>
+
+            <div class="search-box">
+              <label for="menu-search" class="sr-only">ابحث في قائمة الطعام</label>
+              <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="7"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="m16.5 16.5 4 4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <input
+                type="search"
+                id="menu-search"
+                class="search-input"
+                placeholder="ابحث عن كباب، ريش، شيش طاووق..."
+                autocomplete="off"
+                maxlength="60"
+              />
+              <button
+                type="button"
+                id="clear-search-btn"
+                class="clear-search-btn"
+                aria-label="مسح نص البحث"
+                hidden
+              >
+                ×
+              </button>
+            </div>
+          </div>
+
+          <div class="filters-bar">
+            <div
+              class="category-tabs"
+              id="category-tabs"
+              role="tablist"
+              aria-label="تصنيفات قائمة الطعام"
+            ></div>
+
+            <div class="filter-meta">
+              <button
+                type="button"
+                class="featured-toggle"
+                id="featured-only-toggle"
+                aria-pressed="false"
+              >
+                الأكثر طلباً فقط
+              </button>
+              <p class="results-count" id="results-count" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div
+            class="menu-grid"
+            id="menu-grid"
+            data-testid="menu-grid"
+            aria-label="أصناف الطعام"
+          ></div>
+
+          <div class="empty-results" id="empty-results" hidden>
+            <h3 class="empty-title">لم نعثر على أصناف مطابقة لبحثك</h3>
+            <p class="empty-text">جرّب البحث بكلمة أخرى أو العودة إلى جميع أصناف القائمة.</p>
+            <button type="button" class="btn btn-secondary" id="reset-filters-btn">
+              عرض كل القائمة
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="craft-section" id="craft-section" aria-labelledby="craft-heading">
+        <div class="container craft-grid">
+          <div class="craft-copy">
+            <p class="section-eyebrow">حرفة الشواء الأصيلة</p>
+            <h2 class="section-heading" id="craft-heading">نار هادئة، تتبيلة متوازنة، وجودة لا تتغيّر</h2>
+            <p class="craft-paragraph">
+              في مطعم مشويات السلطان نلتزم بالطريقة التقليدية في الشواء على جمر السنديان الطبيعي
+              دون أي إضافات صناعية. تُحضّر التتبيلة من البهارات المحمّصة حديثاً وزيت الزيتون البكر
+              لتمنح كل سيخ طراوة غنية ونكهة مدخّنة متوازنة.
+            </p>
+            <dl class="craft-specs">
+              <div class="craft-spec-item">
+                <dt>ساعات العمل</dt>
+                <dd id="working-hours-text">يومياً من 12:00 ظهراً حتى 2:00 بعد منتصف الليل</dd>
+              </div>
+              <div class="craft-spec-item">
+                <dt>تجهيز الطلب</dt>
+                <dd>يُشوى كل طلب فور تأكيده عبر واتساب لضمان وصوله ساخناً</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="craft-visual">
+            <img
+              src="./assets/dish-sultan-mixed-grill.jpg"
+              alt="طبق مشويات السلطان المشكل على حجر داكن مع مقبلات شرقية"
+              class="craft-image"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              referrerpolicy="no-referrer"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand-block">
+          <p class="footer-brand">مشويات السلطان</p>
+          <p class="footer-tagline">أصل المشويات على الفحم · خدمة التوصيل والاستلام المباشر</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#menu-section" class="footer-link">قائمة الطعام</a>
+          <a href="#craft-section" class="footer-link">أصل الشواء</a>
+          <a
+            href="#top"
+            id="footer-whatsapp-link"
+            class="footer-link footer-whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            تواصل عبر واتساب
+          </a>
+        </div>
+
+        <p class="footer-copy" id="footer-copy">© مشويات السلطان. جميع الحقوق محفوظة.</p>
+      </div>
+    </footer>
+
+    <div class="mobile-cart-bar" id="mobile-cart-bar" hidden>
+      <button
+        type="button"
+        class="mobile-cart-btn"
+        id="mobile-open-cart-btn"
+        aria-haspopup="dialog"
+        aria-controls="cart-drawer"
+      >
+        <span class="mobile-cart-summary">
+          <span class="mobile-cart-count" id="mobile-cart-count">0 أصناف</span>
+          <span aria-hidden="true">·</span>
+          <span>عرض السلة والطلب</span>
+        </span>
+        <span class="mobile-cart-total" id="mobile-cart-total">0 ر.س</span>
+      </button>
+    </div>
+
+    <div class="drawer-backdrop" id="cart-backdrop" hidden></div>
+
+    <aside
+      class="cart-drawer"
+      id="cart-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cart-title"
+      aria-hidden="true"
+      hidden
+    >
+      <div class="drawer-header">
+        <div>
+          <h2 class="drawer-title" id="cart-title">سلة الطلبات</h2>
+          <p class="drawer-subtitle" id="cart-item-summary">السلة فارغة حالياً</p>
+        </div>
+        <button
+          type="button"
+          class="icon-btn"
+          id="close-cart-btn"
+          aria-label="إغلاق سلة الطلبات"
+        >
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M6 6l12 12M18 6 6 18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="drawer-body" id="cart-drawer-body">
+        <div class="cart-empty-state" id="cart-empty-state">
+          <p class="cart-empty-title">سلتك فارغة بعد</p>
+          <p class="cart-empty-desc">
+            اختر ما تشتهيه من مشويات الفحم والمقبلات لتظهر تفاصيل طلبك والإجمالي هنا تلقائياً.
+          </p>
+          <button type="button" class="btn btn-secondary" id="empty-cart-browse-btn">
+            تصفح القائمة
+          </button>
+        </div>
+
+        <ul class="cart-items-list" id="cart-items-list" aria-label="الأصناف المختارة في السلة"></ul>
+
+        <div class="cart-options" id="cart-options" hidden>
+          <fieldset class="order-type-fieldset">
+            <legend class="field-label">طريقة الاستلام</legend>
+            <div class="order-type-group">
+              <button
+                type="button"
+                class="order-type-btn is-active"
+                id="order-type-delivery"
+                data-order-type="delivery"
+                aria-pressed="true"
+              >
+                توصيل للمنزل
+              </button>
+              <button
+                type="button"
+                class="order-type-btn"
+                id="order-type-pickup"
+                data-order-type="pickup"
+                aria-pressed="false"
+              >
+                استلام من الفرع
+              </button>
+            </div>
+          </fieldset>
+
+          <div class="note-field">
+            <label for="order-note" class="field-label">ملاحظات أو عنوان التوصيل (اختياري)</label>
+            <textarea
+              id="order-note"
+              class="note-textarea"
+              rows="2"
+              maxlength="240"
+              placeholder="مثال: بدون بصل، الحي والشارع..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-footer" id="cart-footer" hidden>
+        <p class="delivery-hint" id="delivery-hint"></p>
+
+        <dl class="totals-list">
+          <div class="total-row">
+            <dt>المجموع الفرعي</dt>
+            <dd id="cart-subtotal">0 ر.س</dd>
+          </div>
+          <div class="total-row">
+            <dt>رسوم التوصيل</dt>
+            <dd id="cart-delivery">0 ر.س</dd>
+          </div>
+          <div class="total-row total-grand">
+            <dt>الإجمالي النهائي</dt>
+            <dd id="cart-grand-total">0 ر.س</dd>
+          </div>
+        </dl>
+
+        <p class="cart-validation-msg" id="cart-validation-msg" role="alert" hidden></p>
+
+        <div class="drawer-actions">
+          <a
+            id="whatsapp-order-btn"
+            class="btn btn-whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-disabled="true"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M12 3a9 9 0 0 0-7.79 13.5L3 21l4.64-1.18A9 9 0 1 0 12 3Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9.4 8.9c-.2-.4-.4-.4-.7-.4h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.1 3.1 1.3 3.3c.2.2 2.2 3.4 5.4 4.6 2.6 1 3.2.8 3.8.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.7-.4-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.6-1.5-.9-2Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span>إرسال الطلب عبر واتساب</span>
+          </a>
+
+          <div class="drawer-secondary-actions">
+            <button type="button" class="btn btn-secondary btn-sm" id="copy-order-btn">
+              نسخ تفاصيل الطلب
+            </button>
+            <button type="button" class="btn btn-danger-ghost btn-sm" id="clear-cart-btn">
+              تفريغ السلة
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div
+      class="toast-region"
+      id="toast-region"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+  </body>
+</html>
